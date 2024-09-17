@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-WS_URL = 'ws://TARGET/dbconnector'
+WS_URL = 'ws://TARGET/'
 
 @app.route('/')
 def index():
