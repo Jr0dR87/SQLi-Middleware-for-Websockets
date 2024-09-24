@@ -4,12 +4,13 @@ import json
 
 app = Flask(__name__)
 
-WS_URL = 'ws://TARGET/'
+WS_URL = 'ws://target/targetendpoint'
+PARAM = 'target param'
 
 @app.route('/')
 def index():
     req = {}
-    req['param'] = request.args.get('param', '')
+    req[PARAM] = request.args.get(PARAM)
 
     ws = create_connection(WS_URL)
     ws.send(json.dumps(req))
@@ -22,3 +23,6 @@ def index():
     return r['messages']
 
 app.run(host='127.0.0.1', port=8000)
+
+# Usage
+# sqlmap -u http://127.0.0.1:8000/{the url paramater}=test
